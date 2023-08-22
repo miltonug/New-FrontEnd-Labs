@@ -58,6 +58,7 @@ console.log(
  * ↓ YOUR CODE HERE ↓ */
 // "On July 20th 1969, Niel Armstrong was the first person to set foot on the Earth's moon."
 
+console.log(`On July 20th ${person.year}, ${person.firstname} ${person.lastname} was the first person to set foot on the Earth's moon.`);
 /*-------------------------------------------------------*/
 // Question 2: Instance of a Class
 console.log(`--------------------------
@@ -85,6 +86,8 @@ greeting.hello()
  * Step 3: A greeting should print to the console
  *
  * ↓ YOUR CODE HERE ↓ */
+let myGreeting = new Greeting('Milton', 'CA');
+myGreeting.hello();
 
 /*-------------------------------------------------------*/
 // Question 3: myBook
@@ -114,6 +117,17 @@ class Book {
  * Step 7: Invoke the describe method for the yourBook instance. Make it print to the console also.
  *
  * ↓ YOUR CODE HERE ↓ */
+let myBook = new Book("Pride and Prejudice", "Jane Austen");
+// print just the title of the book to the console
+console.log(myBook.title);
+// print the author of the book to the console
+console.log(myBook.author);
+// Invoke the describe method for the myBook instance
+console.log(myBook.describe());
+// Create an new instance of Book called 'yourBook'
+let yourBook = new Book('The Art of Dumpster Diving', 'Jennifer Anne Moses');
+// Invoke the describe method for the yourBook instance
+console.log(yourBook.describe());
 
 /*-------------------------------------------------------*/
 // Question 4: Create a Class
@@ -129,13 +143,31 @@ Question 4: Create a Class \n`)
  *
  *
  * ↓ YOUR CODE HERE ↓ */
+// Create a Fruit class with a constructor
+class Fruit {
+  constructor(name, color, taste){
+    this.name = name;
+    this.color = color;
+    this.taste = taste;
+  }
+  describe(){
+    console.log(`A ${this.name} is ${this.color} and has a ${this.taste} taste.`);
+  }
+}
+// Create instances of Fruit called fruit1 and fruit2
+ let fruit1 = new Fruit("lime", "green", "sour");
+ let fruit2 = new Fruit("banana", "yellow", "sweet");
+// Invoke the describe method for both instances of Fruit
+ fruit1.describe();
+ fruit2.describe();
 
 /*-------------------------------------------------------*/
 // Question 5: Inheritance and Polymorphism
 console.log(`--------------------------
 Question 5: Inheritance and Polymorphism \n`)
 
-// Look at the provided code below. Notice how Student and Teacher inherit from the Person class through the use of the "extends" and "super" key words. Also, how Student has a redefined details method that is more appropriate than the details method it would have inherited from the Person super class...
+// Look at the provided code below. Notice how Student and Teacher inherit from the Person class through the use of the "extends" and "super" key words. 
+// Also, how Student has a redefined details method that is more appropriate than the details method it would have inherited from the Person super class...
 
 class Person {
   constructor(name, role) {
@@ -172,7 +204,13 @@ class Teacher extends Person {
  * Step 3: Call the introduction method on your new student instance AND the details method, make sure that the results are printed to the console.
  * Step 4: Call the introduction method on your new teacher instance AND the details method, make sure that the results are printed to the console.
  *
- * ↓ YOUR CODE HERE ↓ */
+ * ↓ YOUR CODE HERE ↓ */;
+// new student called student with arguments of "Jacky" and "student" & new teacher called teacher with arguments of "Mr. Bean" and "teacher"
+let student = new Student('Jacky', 'student');
+let teacher = new Teacher('Mr. Bean', 'teacher');
+// Call the introduction method AND the details method on the new student and new teacher instances
+console.log(`${student.introduction()} ${student.details()}`);
+console.log(`${teacher.introduction()} ${teacher.details()}`);
 
 /*-------------------------------------------------------*/
 // Question 6: Inheritance
@@ -199,6 +237,14 @@ class Parent {
  * HINT: You should be using vital key terms like extends and super
  *
  * ↓ YOUR CODE HERE ↓ */
+class Child extends Parent {
+  constructor(name, age){
+    super(name, age);
+  }
+}
+
+let child = new Child('Pugsley', 10);
+child.details();
 
 /*-------------------------------------------------------*/
 // Question 7: Put it all together
@@ -218,5 +264,44 @@ Question 7: Put it all together \n`)
  * Step 10: Display the movies information to the console, using the new instance list
  *
  * ↓ YOUR CODE HERE ↓ */
+class Movie {
+  constructor(title, director){
+    this.title = title;
+    this.director = director;
+  }
+  describe() {
+    // "The movie [movie name here] was directed by [director name here]."
+    return `The movie ${this.title} was directed by ${this.director}.`;
+  }
+}
+
+class List {
+  constructor(){
+      this.movies = [];
+  }
+  addMovie(movie){
+    this.movies.push(movie);
+  }
+  displayMovies(){
+    let movieCollection = "";
+
+    for (let i = 0; i < this.movies.length; i++){
+      movieCollection += `
+      Title: ${this.movies[i].title}. Director: ${this.movies[i].director}.`;
+    } return movieCollection;
+  }
+}
+
+let movie1 = new Movie("Jurassic Park", "Steven Spielberg");
+let movie2 = new Movie("How the Grinch stole Christmas", "Ron Howard");
+
+console.log(movie1.describe());
+console.log(movie2.describe());
+
+let list = new List;
+list.addMovie(movie1);
+list.addMovie(movie2);
+
+console.log(list.displayMovies());
 
 console.log(`-----------Finished------------`)

@@ -165,7 +165,7 @@ willBuyDrink = (isHotOutside, moneyInPocket) => {
     return true;
     else return false;
 }
-console.log(willBuyDrink(true, 10.51));
+console.log(willBuyDrink(true, 10.50));
 
 console.log (`------
 Question 13:  Create a function of your own that solves a problem. In comments, write what the function does and why you created it.`)
